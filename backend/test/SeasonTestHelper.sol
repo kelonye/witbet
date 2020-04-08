@@ -9,20 +9,32 @@ contract SeasonTestHelper is Season {
     constructor (
         address _wbi,
         uint8 _noOfTeams,
-        uint256 _witnetRequestFee,
-        uint256 _betFee
+        uint256 _betFee,
+        uint256 _matchBuildUpDuration
     ) Season(
         _wbi,
         _noOfTeams,
-        _witnetRequestFee,
-        _betFee
+        _betFee,
+        _matchBuildUpDuration
     ) public {}
 
-    function getTimestamp() public view override returns (uint256){
+    function getNow() public view override returns (uint256){
         return timestamp;
     }
 
-    function setTimestamp(uint256 _timestamp) public {
+    function setNow(uint256 _timestamp) public {
         timestamp = _timestamp;
+    }
+
+    function setMatchStartTime(uint8 _home_team, uint8 _away_team, uint256 _timestamp) public {
+        matches[getMatchId(_home_team, _away_team)].startTime = _timestamp;
+    }
+
+    function setMatchEndTime(uint8 _home_team, uint8 _away_team, uint256 _timestamp) public {
+        matches[getMatchId(_home_team, _away_team)].endTime = _timestamp;
+    }
+
+    function setMatchScore(uint8 _home_team, uint8 _away_team, uint8 _home_score, uint8 _away_score) public {
+        matches[getMatchId(_home_team, _away_team)].score = [_home_team, _away_score];
     }
 }

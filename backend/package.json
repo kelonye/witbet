@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.0.33",
+    "moment": "^2.24.0",
     "openzeppelin-solidity": "^2.4.0",
     "witnet-ethereum-bridge": "git+https://github.com/witnet/witnet-ethereum-bridge",
     "witnet-requests": "git+https://github.com/witnet/witnet-requests-js"

@@ -5,5 +5,9 @@ const WitnetRequestsBoardProxy = artifacts.require('WitnetRequestsBoardProxy');
 const Season = artifacts.require('Season');
 module.exports = function (deployer) {
   deployer.link(Witnet, [Season]);
-  deployer.deploy(Season, WitnetRequestsBoardProxy.address, 20, 0, 0);
+  const wbi = WitnetRequestsBoardProxy.address;
+  const noOfTeams = 20;
+  const betFee = 1000000000000000; // web3.utils.toWei('0.001', 'ether').toNumber();
+  const matchBuildUpDuration = 1 * 60 * 60; // seconds
+  deployer.deploy(Season, wbi, noOfTeams, betFee, matchBuildUpDuration);
 };
